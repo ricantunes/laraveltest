@@ -26,17 +26,23 @@ class OrdersController extends Controller
         $orders = $obj->getAllOrdersByUserId($userId);
         //print_r($orders);
 
-        $ordersWithDiscount = array();
+        //$ordersWithDiscount = array();
         
         /*foreach($orders as $order)
         {*/
-            array_push($ordersWithDiscount, DiscountsManager::getAllDiscounts($orders));
+        //array_push($ordersWithDiscount, DiscountsManager::getAllDiscounts($orders));
             //DiscountsManager::getAllDiscounts($order);
         /*}*/
         
         //print_r ($orders);
-        print_r ($ordersWithDiscount);
+        //print_r ($ordersWithDiscount);
+        echo json_encode(DiscountsManager::getAllDiscounts($orders));
 
         //return view('user.profile', ['user' => User::findOrFail($id)]);
     }
+
+    public function ShowAllOrders(OrdersRepository $obj)
+    {
+        echo 'under development';
+    }    
 }

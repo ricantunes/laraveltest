@@ -1,15 +1,18 @@
 <?php namespace App\Classes;
 
+
 	class DiscountsManager 
 	{
-		protected $order;
+		/*protected $orders;
+		protected $discounts;*/
 		
-		public function __construct($order)
+		/*public function __construct($orders)
 		{
-			$this->order = $order;
-		}
+			$this->orders = $orders;
+			$this->discounts = new Discounts();
+		}*/
 		
-		private function setDiscount1()
+		/*private function setDiscount1()
 		{
 			try {
 				
@@ -47,13 +50,24 @@
 				echo 'Caught exception: ',  $e->getMessage(), "\n";
 				return $this;
 			}
-		}
+		}*/
 
 
-		public static function getAllDiscounts($order)
+		public static function getAllDiscounts($orders)
 		{
-			$obj = new DiscountsManager($order);
-			return $obj->setDiscount1()->SetDiscount2()->SetDiscount3();
+			//$obj = new DiscountsManager();
+			//return $obj->setDiscount1()->SetDiscount2()->SetDiscount3();
+
+			$orders_aux = $orders; 
+			$discounts = new Discounts();
+
+			foreach ($discounts->getDiscounts() as $discount)
+			{
+				$orders_aux = $discount->getDiscount($orders_aux);
+			}
+
+			return $orders_aux;
+
 		}
 
 	}

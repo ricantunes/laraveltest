@@ -16,4 +16,6 @@ Route::get('/', function () {
 });
 
 
+Route::get('/orders', 'OrdersController@ShowAllOrders');
+
 Route::get('/orders/{userId}', 'OrdersController@ShowOrderByUserId')->where('userId', '[0-9]+');

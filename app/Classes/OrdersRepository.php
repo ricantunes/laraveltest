@@ -1,6 +1,17 @@
 <?php namespace App\Classes;
 
 
+	class Order 
+	{
+		public $orders;
+		public $reasons = array();
+
+		public function __construct($orders)
+		{
+			$this->orders = $orders;
+		}
+	}
+
 	class OrdersRepository implements IRepository
 	{
 		private $orders;
@@ -18,10 +29,12 @@
 
 		public function getAllOrdersByUserId($userId)
 		{
+			//TODO: verify the user by id
 			$json = json_decode($this->orders);
 			if($json->{"customer-id"} == $userId)
 			{
-				return $json->items;
+				//return $json;//->items;
+				return new Order($json);
 			}
 		}
 		
