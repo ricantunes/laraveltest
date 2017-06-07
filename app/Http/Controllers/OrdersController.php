@@ -36,7 +36,8 @@ class OrdersController extends Controller
         
         //print_r ($orders);
         //print_r ($ordersWithDiscount);
-        echo json_encode(DiscountsManager::getAllDiscounts($orders));
+        //echo json_encode(DiscountsManager::getAllDiscounts($orders));
+        return response()->json(DiscountsManager::getAllDiscounts($orders));
 
         //return view('user.profile', ['user' => User::findOrFail($id)]);
     }

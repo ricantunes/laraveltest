@@ -31,10 +31,16 @@
 		{
 			//TODO: verify the user by id
 			$json = json_decode($this->orders);
+			$newOrder = array();
+
 			if($json->{"customer-id"} == $userId)
 			{
 				//return $json;//->items;
 				return new Order($json);
+			}
+			else
+			{
+				return new Order(null);
 			}
 		}
 		

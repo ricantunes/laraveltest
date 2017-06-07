@@ -66,7 +66,7 @@
 				$orders_aux = $discount->getDiscount($orders_aux);
 			}
 
-			return $orders_aux;
+			return $orders_aux->orders != null ? $orders_aux : "Error";
 
 		}
 
