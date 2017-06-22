@@ -18,24 +18,18 @@
 
 		public function __construct()
 		{
+			//$filename = "http://localhost:8000/jsonFiles/orders/order3.json";
 			$filename = "./jsonFiles/orders/order3.json";
 			$this->orders = file_get_contents($filename);
 		}
-		
-		/*public function getOrderById($id)
-		{
-			return $this->orders->find($id);
-		}*/
 
 		public function getAllOrdersByUserId($userId)
 		{
-			//TODO: verify the user by id
 			$json = json_decode($this->orders);
 			$newOrder = array();
 
 			if($json->{"customer-id"} == $userId)
 			{
-				//return $json;//->items;
 				return new Order($json);
 			}
 			else
