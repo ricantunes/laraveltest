@@ -18,7 +18,7 @@ class DiscountsTest extends DuskTestCase
      *
      * @return void
      */
-    public function testJsonStructure()
+    /*public function testJsonStructure()
     {
         $response = $this->json('GET', '/orders/3');
 
@@ -55,5 +55,8 @@ class DiscountsTest extends DuskTestCase
             ->assertJson([
                 'error' => 'Error 2',
             ]);
-    }
+    }/*
 }
+
+
+?>

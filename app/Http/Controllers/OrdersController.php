@@ -24,7 +24,6 @@ class OrdersController extends Controller
 
     public function ShowAllOrders(OrdersRepository $obj)
     {
-        //echo 'under development';
         return response()->json(new Error("Error 2", "Not available."));
     }    
 }

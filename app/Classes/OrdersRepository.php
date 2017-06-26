@@ -18,7 +18,6 @@
 
 		public function __construct()
 		{
-			//$filename = "http://localhost:8000/jsonFiles/orders/order3.json";
 			$filename = "./jsonFiles/orders/order3.json";
 			$this->orders = file_get_contents($filename);
 		}

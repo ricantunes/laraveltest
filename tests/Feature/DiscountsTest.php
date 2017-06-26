@@ -10,11 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;*/
 
 class DiscountsTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
+    
     public function testJsonStructure()
     {
         $response = $this->json('GET', '/orders/3');
