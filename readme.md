@@ -17,9 +17,9 @@ There are three possible ways of getting a discount:
 
 
 On the root of the project, run the command 
-...
+'''
 php artisan serve
-...
+'''
 , to run the server. Then access http://localhost:8000/orders/ to call the service. In this case, for test purposes, use http://localhost:8000/orders/3, to use the test data provided.
 
 
@@ -50,9 +50,9 @@ Location of the file:
 
 
 To run the tests, run the command on the root of the project.
-...
+'''
 phpunit
-...
+'''
 
 
 ## Built With
