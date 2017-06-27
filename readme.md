@@ -1,51 +1,41 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Propose of the application
 
-## About Laravel
+Build a small (micro)service that calculates discounts for orders.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+There are three possible ways of getting a discount:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- A customer who has already bought for over € 1000, gets a discount of 10% on the whole order.
+- For every products of category "Switches" (id 2), when you buy five, you get a sixth for free.
+- If you buy two or more products of category "Tools" (id 1), you get a 20% discount on the cheapest product.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+## Running the application
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
 
-## Laravel Sponsors
+On the root of the project, run the command **php artisan serve**, to run the server. Then access http://localhost:8000/orders/ to call the service. In this case, for test purposes, use http://localhost:8000/orders/3, to use the test data provided.
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
 
-## Contributing
+## Important Files
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+**app/Classes/Discounts.php** -> Implementation of the diferent discounts, that change the order, if the conditions are met.
+**app/Classes/DiscountsManager.php** -> Class that iterates through all the diferent discounts and returns the final data of the order.
+**app/Classes/Error.php** ->  Class Error
+**app/Classes/IDiscount.php** -> Interface for Discounts. Permits the creation of new types of discount.
+**app/Classes/IRepository.php** -> Interface for Order Repositories. Permits the creation of different types of repositories, not just the one implemented (OrdersRepository).
+**app/Classes/OrdersRepository.php** -> Class for the orders. In this case, for testing purposes, it gets the data by accessing a file hardcoded. Since it implements IRepository, diferent implementations can be created, to improve the app, if needed.
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+**app/Http/Controllers/OrdersController.php** -> controller for the orders, to provide the returning JSON.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+## Unit Tests
+
+Location of the file:
+tests/Features/DiscountsTest.php
+
+
+To run the tests, run the command **phpunit** on the root of the project.
